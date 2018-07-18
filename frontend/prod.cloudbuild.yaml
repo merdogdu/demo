@@ -52,3 +52,4 @@ secrets:
 - kmsKeyName: 'projects/gcb-serverless-demo/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token'
   secretEnv:
     FIREBASE_TOKEN: 'CiQAk/Tam2QoTwFvOjuJoEByF0lp7/OYJSnFM8zMDJllS7iICNMSVgAI+LIrLNgc+Xu0HgBLpbsxibWHMi/VjntcVAQW3eDPJxIHQDhrX73B2un8StevImglWR9HW9eguoKwG6Fn0kngTStlFLyALWo2JQiq+qd3xrN4Mtsp'
+
