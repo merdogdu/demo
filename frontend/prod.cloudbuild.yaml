@@ -14,6 +14,7 @@ steps:
 #Build app
 - id: 'Install dependencies'
   name: 'gcr.io/cloud-builders/npm'
+  dir: 'frontend'
   args: [ 'install' ]
 # - id: 'Lint'
 #   name: 'gcr.io/cloud-builders/npm'
@@ -25,11 +26,13 @@ steps:
 #   - 'CI=true'
 - id: 'Build'
   name: 'gcr.io/cloud-builders/npm'
+  dir: 'frontend'
   args: [ 'run', 'build' ]
 
 # Deploy app
 - id: 'Deploy'
   name: 'gcr.io/$PROJECT_ID/firebase'
+  dir: 'frontend'
   args: [ 'deploy', '-P', 'gcb-serverless-demo' ]
   secretEnv: ['FIREBASE_TOKEN']
 
