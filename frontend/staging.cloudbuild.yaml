@@ -1,0 +1,51 @@
+steps:
+#Fetch node_modules
+# - id: 'Fetch cached node_modules'
+#   name: gcr.io/cloud-builders/gsutil
+#   args: ['cp', 'gs://js-demo-fe-cache/node_modules.tar.gz', 'previous_node_modules.tar.gz']
+# - id: 'Decompress node_modules'
+#   name: gcr.io/cloud-builders/wget
+#   entrypoint: 'sh'
+#   args:
+#       - '-c'
+#       - |
+#         tar -xzf previous_node_modules.tar.gz node_modules
+
+#Build app
+- id: 'Install dependencies'
+  name: 'gcr.io/cloud-builders/npm'
+  args: [ 'install' ]
+# - id: 'Lint'
+#   name: 'gcr.io/cloud-builders/npm'
+#   args: [ 'run', 'lint' ]
+# - id: 'Unit test'
+#   name: 'gcr.io/cloud-builders/npm'
+#   args: [ 'test' ]
+#   env:
+#   - 'CI=true'
+- id: 'Build'
+  name: 'gcr.io/cloud-builders/npm'
+  args: [ 'run', 'build' ]
+
+# Deploy app
+- id: 'Deploy'
+  name: 'gcr.io/$PROJECT_ID/firebase'
+  args: [ 'deploy', '-P', 'gcb-serverless-demo-staging' ]
+  secretEnv: ['FIREBASE_TOKEN']
+
+# Cache node_modules
+# - id: 'Compress node_modules'
+#   name: gcr.io/cloud-builders/wget
+#   entrypoint: 'sh'
+#   args:
+#       - '-c'
+#       - |
+#         tar -czf node_modules.tar.gz node_modules
+# - id: 'Cache node_modules in GCS'
+#   name: gcr.io/cloud-builders/gsutil
+#   args: ['cp', 'node_modules.tar.gz', 'gs://js-demo-fe-cache/node_modules.tar.gz']
+
+secrets:
+- kmsKeyName: 'projects/gcb-serverless-demo/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token'
+  secretEnv:
+    FIREBASE_TOKEN: 'CiQAk/Tam2QoTwFvOjuJoEByF0lp7/OYJSnFM8zMDJllS7iICNMSVgAI+LIrLNgc+Xu0HgBLpbsxibWHMi/VjntcVAQW3eDPJxIHQDhrX73B2un8StevImglWR9HW9eguoKwG6Fn0kngTStlFLyALWo2JQiq+qd3xrN4Mtsp'
