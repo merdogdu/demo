@@ -33,7 +33,7 @@ steps:
 - id: 'Deploy'
   name: 'gcr.io/$PROJECT_ID/firebase'
   dir: 'frontend'
-  args: [ 'deploy', '-P', 'gcb-serverless-demo' ]
+  args: [ 'deploy', '-P', 'gcb-serverless-demo', '--non-interactive' ]
   secretEnv: ['FIREBASE_TOKEN']
 
 # Cache node_modules
