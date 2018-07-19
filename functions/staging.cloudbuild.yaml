@@ -12,7 +12,6 @@ steps:
     'deploy',
     'helloGET_staging',
     '--trigger-http',
-    '--source=.',
-    '--project=${PROJECT_ID}'
+    '--source=.'
   ]
   dir: 'functions'

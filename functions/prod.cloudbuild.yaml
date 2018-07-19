@@ -11,8 +11,7 @@ steps:
     'functions',
     'deploy',
     'helloGET',
-    '--trigger-http',
-    '--source=.',
-    '--project=${PROJECT_ID}'
+    --trigger-http',
+    '--source=.'
   ]
   dir: 'functions'
