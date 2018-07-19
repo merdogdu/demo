@@ -1,0 +1,17 @@
+steps:
+- name: 'gcr.io/cloud-builders/yarn'
+  args: ['install']
+  dir: 'functions'
+# - name: 'gcr.io/cloud-builders/npm'
+#   args: ['test']
+#   dir: 'functions'
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: [
+    'beta',
+    'functions',
+    'deploy',
+    'helloGET_staging',
+    '--trigger-http',
+    '--source=.'
+  ]
+  dir: 'functions'
