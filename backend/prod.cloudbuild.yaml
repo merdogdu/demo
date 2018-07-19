@@ -23,15 +23,14 @@ steps:
   ]
 
 - id: 'Canary 5%'
-  name: 'gcr.io/cloud-builders/gcloud'
+  name: gcr.io/cloud-builders/gcloud
   dir: 'backend'
-  args: [
-    'app', 
-    'services', 
-    'set-traffic',
-    'default',
-    '--splits',
-    '$COMMIT_SHA=.05'
-  ]
+  entrypoint: 'sh'
+  args: 
+    - '-c'
+    - |
+      json='gcloud app versions list --service=default --sort-by=~TRAFFIC_SPLIT --limit=1 --format=json'
+      version=$($json | python -c 'import sys, json; print json.load(sys.stdin)[0]["version"]["id"]')
+      gcloud app services set-traffic default --splits $COMMIT_SHA=5,$version=95 
 
 images: ['gcr.io/$PROJECT_ID/backend-prod:${COMMIT_SHA}']

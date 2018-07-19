@@ -11,6 +11,7 @@ steps:
     'beta',
     'functions',
     'deploy',
-    'helloGET_staging',
+    'helloGet_staging',
     '--trigger-http'
   ]
+  

@@ -11,6 +11,6 @@ steps:
     'beta',
     'functions',
     'deploy',
-    'helloGET',
+    'helloGet',
     '--trigger-http'
   ]

@@ -1,24 +1,26 @@
-/**
- * HTTP Cloud Function.
- * This function is exported by index.js, and is executed when
- * you make an HTTP request to the deployed function's endpoint.
+'use strict';
+/** EXPORT ALL FUNCTIONS
  *
- * @param {Object} req Cloud Function request context.
- * @param {Object} res Cloud Function response context.
+ *   Loads all `.f.js` files
+ *   Exports a cloud function matching the file name
+ *   Author: David King
+ *   Edited: Tarik Huber
+ *   Based on this thread:
+ *     https://github.com/firebase/functions-samples/issues/170
  */
-exports.helloGET = (req, res) => {
-  res.send('Hello World!');
-};
+const glob = require("glob");
+const camelCase = require("camelcase");
 
-/**
- * HTTP Cloud Function.
- * This function is exported by index.js, and is executed when
- * you make an HTTP request to the deployed function's endpoint.
- *
- * @param {Object} req Cloud Function request context.
- * @param {Object} res Cloud Function response context.
- */
-exports.helloGET_staging = (req, res) => {
-  res.send('Hello World!');
-};
-// [END functions_helloworld_get]
+const files = glob.sync('./**/*.f.js', { cwd: __dirname, ignore: './node_modules/**'});
+
+for(let f=0,fl=files.length; f<fl; f++){
+  const file = files[f];
+  const functionName = camelCase(file.slice(0, -5).split('/').join('_')); // Strip off '.f.js'
+  const functionNameStaging = functionName + '_staging';
+  if (!process.env.FUNCTION_NAME || process.env.FUNCTION_NAME === functionName) {
+    exports[functionName] = require(file);
+  }
+  if (!process.env.FUNCTION_NAME_STAGING || process.env.FUNCTION_NAME_STAGING === functionNameStaging) {
+    exports[functionNameStaging] = require(file);
+  }
+}
