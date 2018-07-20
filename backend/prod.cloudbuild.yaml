@@ -34,3 +34,4 @@ steps:
       gcloud app services set-traffic default --splits $COMMIT_SHA=5,$version=95 
 
 images: ['gcr.io/$PROJECT_ID/backend-prod:${COMMIT_SHA}']
+
