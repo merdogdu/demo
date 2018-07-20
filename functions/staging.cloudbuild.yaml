@@ -1,17 +1,40 @@
 steps:
-- name: 'gcr.io/cloud-builders/yarn'
+- id: 'Install node_modules'
+  name: 'gcr.io/cloud-builders/yarn'
+  dir: 'functions'
   args: ['install']
+
+- id: 'Lint'
+  name: 'gcr.io/cloud-builders/npm'
   dir: 'functions'
-# - name: 'gcr.io/cloud-builders/npm'
-#   args: ['test']
-#   dir: 'functions'
-- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'lint']
+
+- id: 'Test'
+  name: 'gcr.io/cloud-builders/npm'
   dir: 'functions'
-  args: [
-    'beta',
-    'functions',
-    'deploy',
-    'helloGet_staging',
-    '--trigger-http'
-  ]
-  
+  args: ['test']
+
+- id: Get functions in prod
+  name: 'gcr.io/cloud-builders/gsutil'
+  dir: 'functions'
+  args: [ 'cp', '-r', 'gs://functions-staging/', '.' ]
+
+- id: Deploy updated functions
+  name: 'gcr.io/cloud-builders/gcloud'
+  dir: 'functions'
+  entrypoint: 'sh'
+  args:
+    - '-c'
+    - |
+      # Get all files in functions/ that have changed from prod
+      for f in $(diff -Nqr functions/ functions-prod/ | awk '{print $4}' | cut -d'/' -f2-); do 
+        # Convert filepath to functionName
+        functionName=$(echo ${f%?????} | sed -r 's/(\/)([a-z])/\U\2/g')
+        echo $functionName
+        gcloud beta functions deploy ${functionName}_staging --trigger-http
+      done
+
+- id: Cache deployed functions
+  name: 'gcr.io/cloud-builders/gsutil'
+  dir: 'functions'
+  args: [ '-m', 'rsync', '-d', '-r', 'functions', 'gs://functions-staging/' ]
