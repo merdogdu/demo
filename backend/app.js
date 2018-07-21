@@ -33,7 +33,7 @@ app.get('/products', (req, res) => {
     {
       name: 'Striped skirt',
       image: 'https://images.pexels.com/photos/1100790/pexels-photo-1100790.jpeg?auto=compress&cs=tinysrgb&w=400',
-      price: 200,
+      price: 199,
       sold_out: false
     },
     {
@@ -46,7 +46,7 @@ app.get('/products', (req, res) => {
       name: 'Linen blazer',
       image: 'https://images.pexels.com/photos/1143793/pexels-photo-1143793.jpeg?auto=compress&cs=tinysrgb&w=400',
       price: 599,
-      sold_out: true
+      sold_out: false
     }
   ];
 

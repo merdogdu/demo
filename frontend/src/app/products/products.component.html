@@ -3,7 +3,6 @@
     <img class="card-img-top" [src]="product.image" [alt]="product.name">
     <div class="card-body">
       <h4 class="card-title">{{product.name}}</h4>
-      <h6 *ngIf="!product.sold_out">${{product.price}}</h6>
       <p *ngIf="product.sold_out">(Sold out)</p>
       <button class="btn btn-primary" [disabled]="product.sold_out">Buy</button>
     </div>
