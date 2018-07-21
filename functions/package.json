@@ -23,7 +23,8 @@
     "camelcase": "^5.0.0",
     "glob": "^7.1.2",
     "pug": "2.0.3",
-    "safe-buffer": "5.1.1"
+    "safe-buffer": "5.1.1",
+    "twilio": "^3.18.0"
   },
   "devDependencies": {
     "@google-cloud/nodejs-repo-tools": "2.2.5",
