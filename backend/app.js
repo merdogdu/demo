@@ -23,6 +23,28 @@ app.get('/', (req, res) => {
   res.status(200).send('Hello, world3!');
 });
 // [END hello_world]
+
+// [START products]
+app.get('/products', (req, res) => {
+  let products = [
+    {
+      name: 'Striped Skirt',
+      image_url: 'https://images.pexels.com/photos/404171/pexels-photo-404171.jpeg'
+    },
+    {
+      name: 'Striped Skirt',
+      image_url: 'https://images.pexels.com/photos/404171/pexels-photo-404171.jpeg'
+    },
+    {
+      name: 'Striped Skirt',
+      image_url: 'https://images.pexels.com/photos/404171/pexels-photo-404171.jpeg'
+    }
+  ];
+
+  res.json(products);
+});
+// [END products]
+
 if (module === require.main) {
   // [START server]
   // Start the server
