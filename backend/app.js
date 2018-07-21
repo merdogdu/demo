@@ -29,15 +29,15 @@ app.get('/products', (req, res) => {
   let products = [
     {
       name: 'Striped Skirt',
-      image_url: 'https://images.pexels.com/photos/404171/pexels-photo-404171.jpeg'
+      image_url: 'https://images.pexels.com/photos/404171/pexels-photo-404171.jpeg?auto=compress&cs=tinysrgb&h=180'
     },
     {
       name: 'Striped Skirt',
-      image_url: 'https://images.pexels.com/photos/404171/pexels-photo-404171.jpeg'
+      image_url: 'https://images.pexels.com/photos/404171/pexels-photo-404171.jpeg?auto=compress&cs=tinysrgb&h=180'
     },
     {
       name: 'Striped Skirt',
-      image_url: 'https://images.pexels.com/photos/404171/pexels-photo-404171.jpeg'
+      image_url: 'https://images.pexels.com/photos/404171/pexels-photo-404171.jpeg?auto=compress&cs=tinysrgb&h=180'
     }
   ];
 
