@@ -7,9 +7,6 @@
   font-size: 50px;
   margin-top: 50px;
   margin-bottom: 70px;
-  /*font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
-  color: #b5b5b5;
-  text-transform: uppercase;*/
 }
 
 .products-grid {
@@ -17,12 +14,4 @@
   margin-right: auto;
   margin-left: auto;
   max-width: 1000px;
-}
-
-.card {
-  margin: 0 auto;
-}
-
-.card-img-top {
-  width: 100%;
 }
