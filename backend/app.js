@@ -43,7 +43,7 @@ app.get('/products', (req, res) => {
     {
       name: 'Linen blazer',
       image: 'https://images.pexels.com/photos/1143793/pexels-photo-1143793.jpeg?auto=compress&cs=tinysrgb&w=400',
-      sold_out: false
+      sold_out: true
     }
   ];
 
