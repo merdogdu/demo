@@ -38,3 +38,4 @@ steps:
   name: 'gcr.io/cloud-builders/gsutil'
   dir: 'functions'
   args: [ '-m', 'rsync', '-d', '-r', 'functions', 'gs://functions-staging/' ]
+
