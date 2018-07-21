@@ -6,3 +6,8 @@
 .card-img-top {
   width: 100%;
 }
+
+card-body btn {
+  background-color: navy;
+  border-color: transparent;
+}
