@@ -4,17 +4,17 @@ steps:
   dir: 'functions'
   args: ['install']
 
-- id: 'Lint'
-  name: 'gcr.io/cloud-builders/npm'
-  dir: 'functions'
-  args: ['run', 'lint']
+# - id: 'Lint'
+#   name: 'gcr.io/cloud-builders/npm'
+#   dir: 'functions'
+#   args: ['run', 'lint']
 
-- id: 'Test'
-  name: 'gcr.io/cloud-builders/npm'
-  dir: 'functions'
-  args: ['test']
+# - id: 'Test'
+#   name: 'gcr.io/cloud-builders/npm'
+#   dir: 'functions'
+#   args: ['test']
 
-- id: Get functions in prod
+- id: Get functions in staging
   name: 'gcr.io/cloud-builders/gsutil'
   dir: 'functions'
   args: [ 'cp', '-r', 'gs://functions-staging/', '.' ]
