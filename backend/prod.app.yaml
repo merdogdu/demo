@@ -11,6 +11,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# [START runtime]
+
 runtime: nodejs8
-# [END runtime]
+
+handlers:
+- url: /products
+  http_headers:
+    Access-Control-Allow-Origin: "*"
