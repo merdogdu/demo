@@ -7,5 +7,5 @@
  * @param {Object} res Cloud Function response context.
  */
 exports = module.exports = (req, res) => {
-  res.send('Hello World2!');
+  res.send('user logout');
 };
