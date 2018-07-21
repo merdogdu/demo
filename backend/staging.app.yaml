@@ -14,9 +14,3 @@
 
 runtime: nodejs8
 service: staging
-
-handlers:
-- url: /products
-  script: app.js
-  http_headers:
-    Access-Control-Allow-Origin: "*"

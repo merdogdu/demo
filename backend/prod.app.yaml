@@ -13,9 +13,3 @@
 #
 
 runtime: nodejs8
-
-handlers:
-- url: /products
-  script: app.js
-  http_headers:
-    Access-Control-Allow-Origin: "*"
