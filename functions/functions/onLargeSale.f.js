@@ -1,9 +1,5 @@
 const twilio = require('twilio');
-const config = require('../.config');
-const accountSid = config.accountSid;
-const authToken  = config.authToken;
-
-const client = new twilio(accountSid, authToken);
+const client = new twilio(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
 
 const twilioNumber = '+12558328453'; // your twilio phone number
 /**
