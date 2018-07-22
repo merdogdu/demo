@@ -33,6 +33,7 @@ steps:
         echo $functionName
         gcloud beta functions deploy ${functionName} --trigger-http --set-env-vars ACCOUNT_SID=$$TWILIO_ACCOUNT_SID,AUTH_TOKEN=$$TWILIO_AUTH_TOKEN
       done
+  secretEnv: [ 'TWILIO_ACCOUNT_SID', 'TWILIO_AUTH_TOKEN' ]
 
 - id: Cache deployed functions
   name: 'gcr.io/cloud-builders/gsutil'
