@@ -26,8 +26,8 @@ steps:
   args:
     - '-c'
     - |
-      # Get all files in functions/ that have changed from prod
-      for f in $(diff -Nqr functions/ functions-prod/ | awk '{print $4}' | cut -d'/' -f2-); do 
+      # Get all files in functions/ that have changed from staging
+      for f in $(diff -Nqr functions/ functions-staging/ | awk '{print $4}' | cut -d'/' -f2-); do 
         # Convert filepath to functionName
         functionName=$(echo ${f%?????} | sed -r 's/(\/)([a-z])/\U\2/g')
         echo $functionName

@@ -28,3 +28,4 @@ exports = module.exports = (req, res) => {
     .then(message => res.send({ success: true }))
     .catch(err => res.status(422).send(err));
 };
+
