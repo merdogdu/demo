@@ -17,7 +17,7 @@ steps:
 - id: Get functions in staging
   name: 'gcr.io/cloud-builders/gsutil'
   dir: 'functions'
-  args: [ 'cp', '-r', 'gs://functions-staging/', '.' ]
+  args: [ '-m', 'cp', '-r', 'gs://functions-staging/', '.' ]
 
 - id: Deploy updated functions
   name: 'gcr.io/cloud-builders/gcloud'

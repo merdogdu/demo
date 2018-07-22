@@ -17,7 +17,7 @@ steps:
 - id: Get functions in prod
   name: 'gcr.io/cloud-builders/gsutil'
   dir: 'functions'
-  args: [ 'cp', '-r', 'gs://functions-prod/', '.' ]
+  args: [ '-m', 'cp', '-r', 'gs://functions-prod/', '.' ]
 
 - id: Deploy updated functions
   name: 'gcr.io/cloud-builders/gcloud'
