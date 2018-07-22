@@ -1,10 +1,11 @@
 const twilio = require('twilio');
-const accountSid = config.twilio.sid;
-const authToken  = config.twilio.token;
+const config = require('../.config');
+const accountSid = config.accountSid;
+const authToken  = config.authToken;
 
 const client = new twilio(accountSid, authToken);
 
-const twilioNumber = '+12558328453' // your twilio phone number
+const twilioNumber = '+12558328453'; // your twilio phone number
 /**
  * HTTP Cloud Function.
  * This function is exported by index.js, and is executed when
@@ -15,13 +16,13 @@ const twilioNumber = '+12558328453' // your twilio phone number
  */
 exports = module.exports = (req, res) => {
   const phoneNumber = '+15555551235';
-  const body = 'Woot! We sold a $500 item';
+  const body = 'Woot! We made a big sale';
 
   const textMessage = {
       body: body,
       to: phoneNumber,  // Text to this number
       from: twilioNumber // From a valid Twilio number
-  }
+  };
 
   return client.messages.create(textMessage)
     .then(message => res.send({ success: true }))
