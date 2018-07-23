@@ -11,7 +11,7 @@ const twilioNumber = '+12558328453'; // your twilio phone number
  * @param {Object} res Cloud Function response context.
  */
 exports = module.exports = (req, res) => {
-  const phoneNumber = '+15555551234';
+  const phoneNumber = '+15555551235';
   const body = 'Woot! We made a big sale';
 
   const textMessage = {
