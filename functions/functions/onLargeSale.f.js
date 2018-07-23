@@ -1,5 +1,5 @@
-const twilio = require('twilio');
-const client = new twilio(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
+const Twilio = require('twilio');
+const client = new Twilio(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
 
 const twilioNumber = '+12558328453'; // your twilio phone number
 /**
@@ -15,9 +15,9 @@ exports = module.exports = (req, res) => {
   const body = 'Woot! We made a big sale';
 
   const textMessage = {
-      body: body,
-      to: phoneNumber,  // Text to this number
-      from: twilioNumber // From a valid Twilio number
+    body: body,
+    to: phoneNumber, // Text to this number
+    from: twilioNumber // From a valid Twilio number
   };
 
   return client.messages.create(textMessage)
