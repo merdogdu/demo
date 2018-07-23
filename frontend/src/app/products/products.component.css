@@ -7,7 +7,11 @@
   width: 100%;
 }
 
-card-body btn {
+.card-title {
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.card-body .btn-primary {
   background-color: navy;
   border-color: transparent;
 }
