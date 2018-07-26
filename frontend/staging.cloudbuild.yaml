@@ -2,7 +2,7 @@ steps:
 - id: 'Install node_modules'
   name: 'gcr.io/cloud-builders/yarn'
   dir: 'frontend'
-  args: [ 'install' ]
+  args: [ 'install', '--production', '--silent' ]
 
 # - id: 'Lint'
 #   name: 'gcr.io/cloud-builders/npm'
