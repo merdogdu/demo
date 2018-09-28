@@ -20,7 +20,7 @@ const app = express();
 // [START hello_world]
 // Say hello!
 app.get('/', (req, res) => {
-  res.status(200).send('Hello, Next London!');
+  res.status(200).send('Hello, world!');
 });
 // [END hello_world]
 
